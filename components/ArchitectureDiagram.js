@@ -1,41 +1,76 @@
-export default function ArchitectureDiagram({ nodes = [] }){
+"use client"
 
-if(!nodes || nodes.length === 0){
-  return null
-}
+import { useEffect, useRef } from "react"
 
-return(
+export default function ArchitectureDiagram({ nodes = [] }) {
 
-<div className="mt-6 flex flex-wrap items-center gap-2 text-xs">
+const containerRef = useRef(null)
 
-{nodes.map((node,i)=>(
+useEffect(() => {
+  const arrows = containerRef.current?.querySelectorAll(".flow-arrow")
 
-<div key={i} className="flex items-center">
+  arrows?.forEach((arrow, index) => {
+    arrow.style.animationDelay = `${index * 0.3}s`
+  })
+}, [])
 
-<div
-className="border border-gray-700 bg-black/40 rounded-lg px-3 py-2 text-center hover:border-blue-400 hover:scale-105 transition relative"
->
+if (!nodes || nodes.length === 0) return null
+
+return (
+
+<div ref={containerRef} className="flex flex-col items-center gap-6 text-sm">
+
+{nodes.map((node, i) => (
+
+<div key={i} className="flex flex-col items-center">
+
+{/* Node Box */}
+<div className="border border-gray-700 bg-black/60 rounded-lg px-5 py-3 text-center w-64 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-500/20 transition">
 {node}
 </div>
 
-{i < nodes.length-1 && (
+{/* Animated Arrow */}
+{i < nodes.length - 1 && (
+<div className="relative flex flex-col items-center mt-2">
 
-<div className="mx-2 flex items-center">
+{/* glowing vertical line */}
+<div className="w-[2px] h-10 bg-gradient-to-b from-blue-500/0 via-blue-500 to-blue-500/0 relative overflow-hidden">
 
-<div className="w-10 h-px bg-gradient-to-r from-blue-500 to-purple-500 relative overflow-hidden">
-
-
-<div className="absolute inset-0 animate-pulse bg-gradient-to-r from-transparent via-white to-transparent opacity-60" />
+{/* flowing particle */}
+<div className="flow-arrow absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-blue-400 rounded-full blur-[1px] animate-flow" />
 
 </div>
 
-</div>
+{/* arrow head */}
+<div className="text-blue-400 text-lg mt-1">↓</div>
 
+</div>
 )}
 
 </div>
 
 ))}
+
+{/* Animation styles */}
+<style jsx>{`
+@keyframes flow {
+  0% {
+    transform: translate(-50%, 0px);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 40px);
+    opacity: 0;
+  }
+}
+
+.animate-flow {
+  animation: flow 1.5s linear infinite;
+}
+`}</style>
 
 </div>
 

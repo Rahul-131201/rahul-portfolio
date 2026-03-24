@@ -1,54 +1,40 @@
 export default function Skills(){
 
-const skills={
-
-"Programming Languages":["Python","JavaScript","Java"],
-
-"Frameworks & Libraries":["Django","Streamlit"],
-
-"Generative & Agentic AI":["LLMs","Prompt Engineering","Agentic AI Systems","GitHub Copilot","GitLab Duo"],
-
-"Automation & Testing":["Selenium","Cucumber BDD","TestNG","API Automation"],
-
-"Performance Testing":["JMeter"],
-
-"DevOps & Version Control":["Git","GitHub","GitLab"],
-
-"Databases":["PostgreSQL"],
-
-"Enterprise Tools":["Jira","Tosca Commander","UiPath Studio","Postman"]
-
+const skills = {
+"Core Expertise":[
+"Generative AI Systems",
+"LLM Prompt Engineering",
+"AI Automation Frameworks"
+],
+"Engineering":[
+"Python","Java","JavaScript","Django","REST APIs"
+],
+"Testing & Automation":[
+"Selenium","API Testing","Cucumber","TestNG"
+],
+"AI Tooling":[
+"GitHub Copilot","GitLab Duo","LLM APIs"
+]
 }
 
 return(
-
 <section id="skills" className="max-w-6xl mx-auto px-6 py-24">
 
-<h2 className="text-3xl font-semibold">Skills Profile</h2>
+<h2 className="text-3xl font-semibold">Skills</h2>
 
-<div className="grid md:grid-cols-3 gap-8 mt-10">
+<div className="grid md:grid-cols-4 gap-6 mt-10">
 
-{Object.entries(skills).map(([category,items])=>(
-
-<div key={category} className="bg-white/5 backdrop-blur-lg border border-gray-800 p-6 rounded-xl">
-
-<h3 className="font-semibold text-lg">{category}</h3>
-
-<ul className="mt-4 space-y-2 text-gray-400 text-sm">
-
-{items.map(skill=>(
-<li key={skill}>{skill}</li>
-))}
-
+{Object.entries(skills).map(([k,v])=>(
+<div key={k} className="bg-white/5 p-6 rounded-xl">
+<h3 className="text-white">{k}</h3>
+<ul className="mt-4 text-sm text-gray-400">
+{v.map(i=>(<li key={i}>{i}</li>))}
 </ul>
-
 </div>
-
 ))}
 
 </div>
 
 </section>
-
 )
 }

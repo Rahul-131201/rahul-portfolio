@@ -1,46 +1,44 @@
-
-// =====================================================
-// components/Hero.js
-// =====================================================
-
 export default function Hero(){
+  return(
+    <section className="max-w-6xl mx-auto px-6 py-32">
 
-return(
+      <h1 className="text-5xl font-bold leading-tight">
+        Gen AI Engineer (QA)
+        <br/>
+        <span className="bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text">
+          Building LLM-Powered Systems
+        </span>
+      </h1>
 
-<section className="max-w-6xl mx-auto px-6 py-32">
+      <p className="mt-6 text-gray-400 max-w-2xl">
+        I design and build production-grade Generative AI systems that automate
+        software testing, accelerate QA workflows, and enhance developer productivity.
 
-<h1 className="text-5xl font-bold leading-tight">
-Software Engineer
-<br/>
-<span className="bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text">
-Generative AI & Automation Engineering
-</span>
-</h1>
+        Specialized in LLM pipelines, agentic workflows, and AI-powered automation platforms.
+      </p>
 
-<p className="mt-6 text-gray-400 max-w-2xl">
-Software Engineer at Capgemini specializing in Generative AI,
-AI-driven automation and intelligent testing platforms.
+      {/* Impact Section */}
+      <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-center">
+        <div className="bg-white/5 p-4 rounded-xl">90–100% Test Case Generation Accuracy</div>
+        <div className="bg-white/5 p-4 rounded-xl">25%-50% Reduction in QA Documentation Effort</div>
+        <div className="bg-white/5 p-4 rounded-xl">5+ AI Automation Solutions Delivered</div>
+        <div className="bg-white/5 p-4 rounded-xl">LLM-Powered QA & Automation Systems</div>
+      </div>
 
-Experienced in building LLM-powered developer tools,
-automation frameworks and AI agents that transform
-traditional QA workflows and significantly reduce
-manual engineering effort.
-</p>
+      <div className="mt-10 flex gap-4">
+        <a href="#projects" className="bg-white text-black px-6 py-3 rounded-xl">
+          Explore AI Systems →
+        </a>
 
-<div className="mt-8 flex gap-4">
+        <a 
+          href="/Rahul_Ramane_Resume.pdf" 
+          target="_blank"
+          className="px-6 py-2 bg-blue-600 rounded-lg"
+        >
+          Download Resume
+        </a>
+      </div>
 
-<a href="#projects" className="bg-white text-black px-6 py-3 rounded-xl">
-View Projects
-</a>
-
-<a href="/resume.pdf" className="border border-gray-600 px-6 py-3 rounded-xl">
-Download Resume
-</a>
-
-</div>
-
-</section>
-
-)
-
+    </section>
+  )
 }

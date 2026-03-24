@@ -1,6 +1,11 @@
+"use client"
+
+import { useState } from "react"
 import ArchitectureDiagram from "./ArchitectureDiagram"
 
 export default function OtherProjects(){
+
+const [selectedProject, setSelectedProject] = useState(null)
 
 const projects=[
 {
@@ -41,6 +46,7 @@ return(
 <div key={project.title} className="bg-white/5 border border-gray-800 p-8 rounded-xl hover:scale-105 transition">
 
 <h3 className="text-lg font-semibold">{project.title}</h3>
+
 <p className="text-gray-400 mt-4 text-sm leading-relaxed">
 {project.description}
 </p>
@@ -49,13 +55,44 @@ return(
 Technologies: {project.tech}
 </p>
 
-<ArchitectureDiagram nodes={project.architecture}/>
+<button
+onClick={()=>setSelectedProject(project)}
+className="mt-4 text-blue-400 text-sm hover:underline"
+>
+View Architecture →
+</button>
 
 </div>
 
 ))}
 
 </div>
+
+{/* ===== MODAL ===== */}
+{selectedProject && (
+
+<div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+
+<div className="bg-black border border-gray-700 rounded-xl p-8 max-w-lg w-full relative">
+
+<button
+onClick={()=>setSelectedProject(null)}
+className="absolute top-3 right-4 text-gray-400 hover:text-white"
+>
+✕
+</button>
+
+<h3 className="text-lg font-semibold mb-6">
+{selectedProject.title} Architecture
+</h3>
+
+<ArchitectureDiagram nodes={selectedProject.architecture} />
+
+</div>
+
+</div>
+
+)}
 
 </section>
 
