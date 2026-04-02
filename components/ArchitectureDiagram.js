@@ -3,77 +3,64 @@
 import { useEffect, useRef } from "react"
 
 export default function ArchitectureDiagram({ nodes = [] }) {
+  const containerRef = useRef(null)
 
-const containerRef = useRef(null)
+  useEffect(() => {
+    const arrows = containerRef.current?.querySelectorAll(".flow-arrow")
+    arrows?.forEach((arrow, index) => {
+      arrow.style.animationDelay = `${index * 0.3}s`
+    })
+  }, [])
 
-useEffect(() => {
-  const arrows = containerRef.current?.querySelectorAll(".flow-arrow")
+  if (!nodes || nodes.length === 0) return null
 
-  arrows?.forEach((arrow, index) => {
-    arrow.style.animationDelay = `${index * 0.3}s`
-  })
-}, [])
+  return (
+    <div ref={containerRef} className="flex flex-col items-center gap-3 text-sm">
+      {nodes.map((node, i) => (
+        <div key={i} className="flex flex-col items-center w-full">
 
-if (!nodes || nodes.length === 0) return null
+          {/* Node */}
+          <div
+            className="w-full max-w-xs px-5 py-3 rounded-xl text-center text-white text-sm font-medium transition-all duration-300 hover:scale-105 cursor-default"
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              border: "1px solid rgba(96,165,250,0.25)",
+              backdropFilter: "blur(8px)",
+              boxShadow: "0 4px 20px rgba(96,165,250,0.08)",
+            }}
+          >
+            <span className="text-blue-400/60 mr-2 text-xs">{String(i + 1).padStart(2, "0")}</span>
+            {node}
+          </div>
 
-return (
+          {/* Connector */}
+          {i < nodes.length - 1 && (
+            <div className="flex flex-col items-center my-1">
+              <div
+                className="w-[2px] h-8 relative overflow-hidden"
+                style={{ background: "linear-gradient(180deg, rgba(96,165,250,0) 0%, #60a5fa 50%, rgba(96,165,250,0) 100%)" }}
+              >
+                <div className="flow-arrow absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-blue-400 rounded-full" />
+              </div>
+              <svg width="12" height="8" viewBox="0 0 12 8" fill="none" className="mt-[-2px]">
+                <path d="M6 8 L0 0 L12 0 Z" fill="#60a5fa" opacity="0.8" />
+              </svg>
+            </div>
+          )}
 
-<div ref={containerRef} className="flex flex-col items-center gap-6 text-sm">
+        </div>
+      ))}
 
-{nodes.map((node, i) => (
-
-<div key={i} className="flex flex-col items-center">
-
-{/* Node Box */}
-<div className="border border-gray-700 bg-black/60 rounded-lg px-5 py-3 text-center w-64 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-500/20 transition">
-{node}
-</div>
-
-{/* Animated Arrow */}
-{i < nodes.length - 1 && (
-<div className="relative flex flex-col items-center mt-2">
-
-{/* glowing vertical line */}
-<div className="w-[2px] h-10 bg-gradient-to-b from-blue-500/0 via-blue-500 to-blue-500/0 relative overflow-hidden">
-
-{/* flowing particle */}
-<div className="flow-arrow absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-blue-400 rounded-full blur-[1px] animate-flow" />
-
-</div>
-
-{/* arrow head */}
-<div className="text-blue-400 text-lg mt-1">↓</div>
-
-</div>
-)}
-
-</div>
-
-))}
-
-{/* Animation styles */}
-<style jsx>{`
-@keyframes flow {
-  0% {
-    transform: translate(-50%, 0px);
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%, 40px);
-    opacity: 0;
-  }
-}
-
-.animate-flow {
-  animation: flow 1.5s linear infinite;
-}
-`}</style>
-
-</div>
-
-)
-
+      <style jsx>{`
+        @keyframes flow {
+          0%   { transform: translate(-50%, 0px); opacity: 0; }
+          20%  { opacity: 1; }
+          100% { transform: translate(-50%, 32px); opacity: 0; }
+        }
+        .flow-arrow {
+          animation: flow 1.4s linear infinite;
+        }
+      `}</style>
+    </div>
+  )
 }

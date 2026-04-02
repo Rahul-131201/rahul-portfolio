@@ -39,7 +39,7 @@ components/
 "use client"
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber"
-import { useRef, useMemo } from "react"
+import { useRef, useMemo, useState, useEffect } from "react"
 import * as THREE from "three"
 
 function NeuralField(){
@@ -218,9 +218,23 @@ function NeuralField(){
 }
 
 export default function Background(){
+  const wrapperRef = useRef(null)
+  const [active, setActive] = useState(true)
+
+  useEffect(() => {
+    const el = wrapperRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([entry]) => setActive(entry.isIntersecting),
+      { threshold: 0 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
   return(
-    <div className="fixed inset-0 -z-10">
-      <Canvas camera={{position:[0,0,14], fov:60}}>
+    <div ref={wrapperRef} className="fixed inset-0 -z-10">
+      <Canvas frameloop={active ? "always" : "demand"} camera={{position:[0,0,14], fov:60}}>
         <ambientLight intensity={0.9}/>
         <pointLight position={[10,10,10]} intensity={2}/>
         <NeuralField/>

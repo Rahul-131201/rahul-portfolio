@@ -4,344 +4,345 @@
 import { useState } from "react"
 import ArchitectureDiagram from "./ArchitectureDiagram"
 
-export default function Experience(){
-
-const [selectedArch, setSelectedArch] = useState(null)
-
-return(
-<section id="experience" className="max-w-6xl mx-auto px-6 py-24">
-
-<h2 className="text-3xl font-semibold">Professional Experience</h2>
-
-<div className="mt-12 space-y-16 text-gray-400">
-
-{/* ---- TRAINING ---- */}
-<div className="bg-white/5 border border-gray-800 p-6 rounded-xl">
-
-<h4 className="text-white font-semibold">
-Java + Selenium Automation Training & Project
-</h4>
-
-<p className="text-xs text-blue-400 mt-1">
-Java • Selenium • Test Automation • Agile (Sprint-based)
-</p>
-
-<p className="mt-4 text-sm">
-<b>Context:</b> Completed 3-month structured training program at Capgemini focused on automation testing fundamentals.
-</p>
-
-<ul className="mt-4 list-disc list-inside text-sm space-y-2">
-<li>Worked on real-world website automation project (Ixigo)</li>
-<li>Developed Selenium-based test scripts using Java</li>
-<li>Executed test scenarios within Agile sprint cycles</li>
-<li>Participated in test case design, execution, and validation</li>
-<li>Gained hands-on experience with automation frameworks</li>
-</ul>
-
-<p className="mt-4 text-green-400 text-xs">
-Impact: Built strong foundation in automation testing and Agile workflows
-</p>
-
-</div>
-
-{/* ================= CAPGEMINI ================= */}
-
-<div>
-
-<h3 className="text-white text-xl font-semibold">Capgemini India</h3>
-<p className="text-sm mt-1">Software Engineer | Sept 2024 – Present</p>
-
-<div className="mt-8 space-y-10">
-
-{/* ---- JMeter ---- */}
-<div className="bg-white/5 border border-gray-800 p-6 rounded-xl">
-
-<h4 className="text-white font-semibold">
-AI-Powered JMeter Script Generation Platform
-</h4>
-
-<p className="text-xs text-blue-400 mt-1">
-Prompt Engineering • JMeter • Django • Streamlit • API Automation
-</p>
-
-<p className="mt-4 text-sm">
-<b>Problem:</b> Performance test scripting required heavy manual effort and lacked consistency.
-</p>
-
-<p className="mt-2 text-sm">
-<b>Solution:</b> Built an AI-assisted system to generate JMeter scripts using prompt engineering and backend automation.
-</p>
-
-<ul className="mt-4 list-disc list-inside text-sm space-y-2">
-<li>Collaborated with SMEs to define performance testing use cases</li>
-<li>Automated JMeter script generation using GitHub Copilot</li>
-<li>Built Django-based backend for script processing</li>
-<li>Developed Streamlit UI for execution and validation</li>
-<li>Performed API validation using Postman</li>
-<li>Automated script verification using JMeter</li>
-<li>Built utility to extract hidden URLs from complex web apps</li>
-</ul>
-
-<button
-onClick={()=>setSelectedArch({
-title:"JMeter AI Platform Architecture",
-nodes:[
-"User Input",
-"Streamlit UI",
-"Django API Layer",
-"Prompt Engineering",
-"LLM Processing",
-"JMeter Script Output",
-"Validation Layer"
-]
-})}
-className="mt-4 text-blue-400 text-sm hover:underline"
->
-View Architecture →
-</button>
-
-<p className="mt-4 text-green-400 text-xs">
-Impact: Reduced manual scripting effort and improved consistency
-</p>
-
-</div>
-
-{/* ---- TOSCA AGENT ---- */}
-<div className="bg-white/5 border border-gray-800 p-6 rounded-xl">
-
-<h4 className="text-white font-semibold">
-Tosca → Manual Test Case Migration Agent
-</h4>
-
-<p className="text-xs text-blue-400 mt-1">
-Prompt Engineering • Django • API Development • Test Automation
-</p>
-
-<p className="mt-4 text-sm">
-<b>Problem:</b> Manual test case creation from Tosca scripts was time-consuming and inconsistent.
-</p>
-
-<p className="mt-2 text-sm">
-<b>Solution:</b> Developed an AI-powered Django agent to convert Tosca scripts into structured test cases.
-</p>
-
-<ul className="mt-4 list-disc list-inside text-sm space-y-2">
-<li>Built LLM-based pipeline for metadata and step generation</li>
-<li>Developed REST APIs for upload, conversion, and download workflows</li>
-<li>Integrated Streamlit frontend for user interaction</li>
-<li>Generated structured titles, steps, and descriptions using AI</li>
-<li>Built parsing utilities and batch processing workflows</li>
-<li>Implemented validation mechanisms for output quality</li>
-</ul>
-
-<button
-onClick={()=>setSelectedArch({
-title:"Tosca Migration Agent Architecture",
-nodes:[
-"Upload Tosca Script",
-"Parser Engine",
-"Prompt Builder",
-"LLM Processing",
-"Test Case Generator",
-"Download Output"
-]
-})}
-className="mt-4 text-blue-400 text-sm hover:underline"
->
-View Architecture →
-</button>
-
-<p className="mt-4 text-green-400 text-xs">
-Impact: Achieved 97–100% automated conversion accuracy, reducing manual effort by 80%.
-</p>
-
-</div>
-
-</div>
-</div>
-
-{/* ================= NATWEST ================= */}
-
-<div>
-
-<h3 className="text-white text-xl font-semibold">NATWEST (Wealth Client)</h3>
-<p className="text-sm mt-1">July 2025 – Dec 2025</p>
-
-<div className="mt-8 space-y-10">
-
-{/* ---- USE CASE 1 ---- */}
-<div className="bg-white/5 border border-gray-800 p-6 rounded-xl">
-
-<h4 className="text-white font-semibold">
-Tosca → Manual Test Case Migration (IDE Integrated)
-</h4>
-
-<p className="text-xs text-blue-400 mt-1">
-Prompt Engineering • Python • GitLab Duo
-</p>
-
-<p className="mt-4 text-sm">
-<b>Problem:</b> Manual documentation of test cases from automation scripts was inefficient.
-</p>
-
-<p className="mt-2 text-sm">
-<b>Solution:</b> Developed IDE-integrated GenAI solution using GitLab Duo to generate structured test cases.
-</p>
-
-<ul className="mt-4 list-disc list-inside text-sm space-y-2">
-<li>Transformed Tosca scripts into structured functional test cases</li>
-<li>Used standardized templates for consistency</li>
-<li>Generated detailed step-wise outputs</li>
-<li>Built strong understanding of Tosca command structures</li>
-</ul>
-
-<button
-onClick={()=>setSelectedArch({
-title:"IDE GenAI Migration Architecture",
-nodes:[
-"Tosca Script Input",
-"IDE Integration",
-"Prompt Templates",
-"LLM (GitLab Duo)",
-"Test Case Output"
-]
-})}
-className="mt-4 text-blue-400 text-sm hover:underline"
->
-View Architecture →
-</button>
-
-<p className="mt-4 text-green-400 text-xs">
-Impact: 90–100% conversion accuracy and 25% reduction in manual effort
-</p>
-
-</div>
-
-{/* ---- USE CASE 2 ---- */}
-<div className="bg-white/5 border border-gray-800 p-6 rounded-xl">
-
-<h4 className="text-white font-semibold">
-UiPath Script Review Automation
-</h4>
-
-<p className="text-xs text-blue-400 mt-1">
-Python • Prompt Engineering • GitLab Duo
-</p>
-
-<p className="mt-4 text-sm">
-<b>Problem:</b> Manual validation of UiPath scripts lacked consistency and standardization.
-</p>
-
-<p className="mt-2 text-sm">
-<b>Solution:</b> Built AI-powered validation engine using rule-based + prompt-based analysis.
-</p>
-
-<ul className="mt-4 list-disc list-inside text-sm space-y-2">
-<li>Developed standardized QA checklist for UiPath scripts</li>
-<li>Automated validation using GenAI prompts</li>
-<li>Generated pass/fail reports with recommendations</li>
-<li>Provided remediation insights for improvements</li>
-</ul>
-
-<button
-onClick={()=>setSelectedArch({
-title:"UiPath Review Engine Architecture",
-nodes:[
-"Upload UiPath Script",
-"Checklist Engine",
-"Prompt Validator",
-"LLM Analysis",
-"Report Generator"
-]
-})}
-className="mt-4 text-blue-400 text-sm hover:underline"
->
-View Architecture →
-</button>
-
-<p className="mt-4 text-green-400 text-xs">
-Impact: Generated reports with 80–90% accuracy, cutting manual effort by 50–52%.
-</p>
-
-</div>
-
-{/* ---- USE CASE 3 ---- */}
-<div className="bg-white/5 border border-gray-800 p-6 rounded-xl">
-
-<h4 className="text-white font-semibold">
-UiPath Script Generation using GenAI
-</h4>
-
-<p className="text-xs text-blue-400 mt-1">
-GenAI • XML Processing • Prompt Engineering
-</p>
-
-<p className="mt-4 text-sm">
-<b>Problem:</b> Manual creation of UiPath scripts was time-intensive and repetitive.
-</p>
-
-<p className="mt-2 text-sm">
-<b>Solution:</b> Built GenAI solution to generate UiPath XML scripts directly from Tosca scripts.
-</p>
-
-<ul className="mt-4 list-disc list-inside text-sm space-y-2">
-<li>Generated UiPath-compatible XML scripts</li>
-<li>Captured test data and comments effectively</li>
-<li>Worked without selectors using structured prompts</li>
-<li>Created reusable templates for script generation</li>
-</ul>
-
-<button
-onClick={()=>setSelectedArch({
-title:"UiPath Generator Architecture",
-nodes:[
-"Tosca Script Input",
-"Transformation Logic",
-"Prompt Engine",
-"LLM",
-"XML Script Output"
-]
-})}
-className="mt-4 text-blue-400 text-sm hover:underline"
->
-View Architecture →
-</button>
-
-<p className="mt-4 text-green-400 text-xs">
-Impact: Accelerated RPA development and improved consistency
-</p>
-
-</div>
-
-</div>
-</div>
-
-</div>
-
-{/* ===== MODAL ===== */}
-{selectedArch && (
-<div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
-
-<div className="bg-black border border-gray-700 rounded-xl p-8 max-w-lg w-full relative">
-
-<button
-onClick={()=>setSelectedArch(null)}
-className="absolute top-3 right-4 text-gray-400 hover:text-white"
->
-✕
-</button>
-
-<h3 className="text-lg font-semibold mb-6">
-{selectedArch.title}
-</h3>
-
-<ArchitectureDiagram nodes={selectedArch.nodes} />
-
-</div>
-
-</div>
-)}
-
-</section>
-)
+function TechBadges({ text }) {
+  return (
+    <div className="flex flex-wrap gap-1.5 mt-2">
+      {text.split(" • ").map((t) => (
+        <span key={t} className="tech-badge">◆ {t}</span>
+      ))}
+    </div>
+  )
+}
+
+function ImpactBox({ text }) {
+  return (
+    <div className="mt-4 flex items-start gap-2 px-4 py-2.5 rounded-lg"
+      style={{ background: "rgba(52,211,153,0.08)", border: "1px solid rgba(52,211,153,0.2)" }}>
+      <span className="text-green-400 mt-0.5">⚡</span>
+      <p className="text-green-400 text-xs leading-relaxed">{text}</p>
+    </div>
+  )
+}
+
+function ArchBtn({ label, onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border border-blue-500/30 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 hover:border-blue-400 transition-all duration-200"
+    >
+      ◈ {label} →
+    </button>
+  )
+}
+
+function SectionCard({ children }) {
+  return (
+    <div className="card-3d glow-border p-6">
+      {children}
+    </div>
+  )
+}
+
+export default function Experience() {
+  const [selectedArch, setSelectedArch] = useState(null)
+
+  return (
+    <section id="experience" className="relative max-w-6xl mx-auto px-6 py-28 overflow-hidden">
+
+      {/* Orb */}
+      <div className="gradient-glow w-[600px] h-[600px] top-0 right-[-200px] pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(96,165,250,0.08), transparent 65%)" }} />
+
+      <div className="flex items-center gap-4 mb-3">
+        <span className="text-2xl">💼</span>
+        <h2 className="section-heading">Professional Experience</h2>
+      </div>
+
+      <div className="mt-14 space-y-20 text-gray-400">
+
+        {/* ══════════ TRAINING ══════════ */}
+        <SectionCard>
+          <h4 className="text-white font-semibold text-base">
+            Java + Selenium Automation Training &amp; Project
+          </h4>
+          <TechBadges text="Java • Selenium • Test Automation • Agile (Sprint-based)" />
+          <p className="mt-4 text-sm leading-relaxed">
+            <span className="text-gray-300 font-medium">Context:</span>{" "}
+            Completed 3-month structured training program at Capgemini focused on automation testing fundamentals.
+          </p>
+          <ul className="mt-4 space-y-1.5 text-sm">
+            {[
+              "Worked on real-world website automation project (Ixigo)",
+              "Developed Selenium-based test scripts using Java",
+              "Executed test scenarios within Agile sprint cycles",
+              "Participated in test case design, execution, and validation",
+              "Gained hands-on experience with automation frameworks",
+            ].map((li) => (
+              <li key={li} className="flex items-start gap-2">
+                <span className="text-blue-400 mt-0.5 flex-shrink-0">▸</span>
+                {li}
+              </li>
+            ))}
+          </ul>
+          <ImpactBox text="Impact: Built strong foundation in automation testing and Agile workflows" />
+        </SectionCard>
+
+        {/* ══════════ CAPGEMINI ══════════ */}
+        <div>
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-xl flex-shrink-0"
+              style={{ background: "rgba(96,165,250,0.12)", border: "1px solid rgba(96,165,250,0.25)" }}>
+              🏢
+            </div>
+            <div>
+              <h3 className="text-white text-xl font-bold">Capgemini India</h3>
+              <p className="text-sm text-gray-500 mt-0.5">◈ Software Engineer &nbsp;|&nbsp; Sept 2024 – Present</p>
+            </div>
+          </div>
+
+          <div className="space-y-8">
+
+            {/* ---- JMeter ---- */}
+            <SectionCard>
+              <h4 className="text-white font-semibold text-base">
+                AI-Powered JMeter Script Generation Platform
+              </h4>
+              <TechBadges text="Prompt Engineering • JMeter • Django • Streamlit • API Automation" />
+              <p className="mt-4 text-sm leading-relaxed">
+                <span className="text-gray-300 font-medium">Problem:</span>{" "}
+                Performance test scripting required heavy manual effort and lacked consistency.
+              </p>
+              <p className="mt-2 text-sm leading-relaxed">
+                <span className="text-gray-300 font-medium">Solution:</span>{" "}
+                Built an AI-assisted system to generate JMeter scripts using prompt engineering and backend automation.
+              </p>
+              <ul className="mt-4 space-y-1.5 text-sm">
+                {[
+                  "Collaborated with SMEs to define performance testing use cases",
+                  "Automated JMeter script generation using GitHub Copilot",
+                  "Built Django-based backend for script processing",
+                  "Developed Streamlit UI for execution and validation",
+                  "Performed API validation using Postman",
+                  "Automated script verification using JMeter",
+                  "Built utility to extract hidden URLs from complex web apps",
+                ].map((li) => (
+                  <li key={li} className="flex items-start gap-2">
+                    <span className="text-blue-400 mt-0.5 flex-shrink-0">▸</span>
+                    {li}
+                  </li>
+                ))}
+              </ul>
+              <ArchBtn
+                label="View Architecture"
+                onClick={() => setSelectedArch({
+                  title: "JMeter AI Platform Architecture",
+                  nodes: ["User Input","Streamlit UI","Django API Layer","Prompt Engineering","LLM Processing","JMeter Script Output","Validation Layer"],
+                })}
+              />
+              <ImpactBox text="Impact: Reduced manual scripting effort and improved consistency" />
+            </SectionCard>
+
+            {/* ---- TOSCA AGENT ---- */}
+            <SectionCard>
+              <h4 className="text-white font-semibold text-base">
+                Tosca → Manual Test Case Migration Agent
+              </h4>
+              <TechBadges text="Prompt Engineering • Django • API Development • Test Automation" />
+              <p className="mt-4 text-sm leading-relaxed">
+                <span className="text-gray-300 font-medium">Problem:</span>{" "}
+                Manual test case creation from Tosca scripts was time-consuming and inconsistent.
+              </p>
+              <p className="mt-2 text-sm leading-relaxed">
+                <span className="text-gray-300 font-medium">Solution:</span>{" "}
+                Developed an AI-powered Django agent to convert Tosca scripts into structured test cases.
+              </p>
+              <ul className="mt-4 space-y-1.5 text-sm">
+                {[
+                  "Built LLM-based pipeline for metadata and step generation",
+                  "Developed REST APIs for upload, conversion, and download workflows",
+                  "Integrated Streamlit frontend for user interaction",
+                  "Generated structured titles, steps, and descriptions using AI",
+                  "Built parsing utilities and batch processing workflows",
+                  "Implemented validation mechanisms for output quality",
+                ].map((li) => (
+                  <li key={li} className="flex items-start gap-2">
+                    <span className="text-blue-400 mt-0.5 flex-shrink-0">▸</span>
+                    {li}
+                  </li>
+                ))}
+              </ul>
+              <ArchBtn
+                label="View Architecture"
+                onClick={() => setSelectedArch({
+                  title: "Tosca Migration Agent Architecture",
+                  nodes: ["Upload Tosca Script","Parser Engine","Prompt Builder","LLM Processing","Test Case Generator","Download Output"],
+                })}
+              />
+              <ImpactBox text="Impact: Achieved 97–100% automated conversion accuracy, reducing manual effort by 80%." />
+            </SectionCard>
+
+          </div>
+        </div>
+
+        {/* ══════════ NATWEST ══════════ */}
+        <div>
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-xl flex-shrink-0"
+              style={{ background: "rgba(167,139,250,0.12)", border: "1px solid rgba(167,139,250,0.25)" }}>
+              🏦
+            </div>
+            <div>
+              <h3 className="text-white text-xl font-bold">NATWEST (Wealth Client)</h3>
+              <p className="text-sm text-gray-500 mt-0.5">◈ July 2025 – Dec 2025</p>
+            </div>
+          </div>
+
+          <div className="space-y-8">
+
+            {/* Use Case 1 */}
+            <SectionCard>
+              <h4 className="text-white font-semibold text-base">
+                Tosca → Manual Test Case Migration (IDE Integrated)
+              </h4>
+              <TechBadges text="Prompt Engineering • Python • GitLab Duo" />
+              <p className="mt-4 text-sm leading-relaxed">
+                <span className="text-gray-300 font-medium">Problem:</span>{" "}
+                Manual documentation of test cases from automation scripts was inefficient.
+              </p>
+              <p className="mt-2 text-sm leading-relaxed">
+                <span className="text-gray-300 font-medium">Solution:</span>{" "}
+                Developed IDE-integrated GenAI solution using GitLab Duo to generate structured test cases.
+              </p>
+              <ul className="mt-4 space-y-1.5 text-sm">
+                {[
+                  "Transformed Tosca scripts into structured functional test cases",
+                  "Used standardized templates for consistency",
+                  "Generated detailed step-wise outputs",
+                  "Built strong understanding of Tosca command structures",
+                ].map((li) => (
+                  <li key={li} className="flex items-start gap-2">
+                    <span className="text-purple-400 mt-0.5 flex-shrink-0">▸</span>
+                    {li}
+                  </li>
+                ))}
+              </ul>
+              <ArchBtn
+                label="View Architecture"
+                onClick={() => setSelectedArch({
+                  title: "IDE GenAI Migration Architecture",
+                  nodes: ["Tosca Script Input","IDE Integration","Prompt Templates","LLM (GitLab Duo)","Test Case Output"],
+                })}
+              />
+              <ImpactBox text="Impact: 90–100% conversion accuracy and 25% reduction in manual effort" />
+            </SectionCard>
+
+            {/* Use Case 2 */}
+            <SectionCard>
+              <h4 className="text-white font-semibold text-base">
+                UiPath Script Review Automation
+              </h4>
+              <TechBadges text="Python • Prompt Engineering • GitLab Duo" />
+              <p className="mt-4 text-sm leading-relaxed">
+                <span className="text-gray-300 font-medium">Problem:</span>{" "}
+                Manual validation of UiPath scripts lacked consistency and standardization.
+              </p>
+              <p className="mt-2 text-sm leading-relaxed">
+                <span className="text-gray-300 font-medium">Solution:</span>{" "}
+                Built AI-powered validation engine using rule-based + prompt-based analysis.
+              </p>
+              <ul className="mt-4 space-y-1.5 text-sm">
+                {[
+                  "Developed standardized QA checklist for UiPath scripts",
+                  "Automated validation using GenAI prompts",
+                  "Generated pass/fail reports with recommendations",
+                  "Provided remediation insights for improvements",
+                ].map((li) => (
+                  <li key={li} className="flex items-start gap-2">
+                    <span className="text-purple-400 mt-0.5 flex-shrink-0">▸</span>
+                    {li}
+                  </li>
+                ))}
+              </ul>
+              <ArchBtn
+                label="View Architecture"
+                onClick={() => setSelectedArch({
+                  title: "UiPath Review Engine Architecture",
+                  nodes: ["Upload UiPath Script","Checklist Engine","Prompt Validator","LLM Analysis","Report Generator"],
+                })}
+              />
+              <ImpactBox text="Impact: Generated reports with 80–90% accuracy, cutting manual effort by 50–52%." />
+            </SectionCard>
+
+            {/* Use Case 3 */}
+            <SectionCard>
+              <h4 className="text-white font-semibold text-base">
+                UiPath Script Generation using GenAI
+              </h4>
+              <TechBadges text="GenAI • XML Processing • Prompt Engineering" />
+              <p className="mt-4 text-sm leading-relaxed">
+                <span className="text-gray-300 font-medium">Problem:</span>{" "}
+                Manual creation of UiPath scripts was time-intensive and repetitive.
+              </p>
+              <p className="mt-2 text-sm leading-relaxed">
+                <span className="text-gray-300 font-medium">Solution:</span>{" "}
+                Built GenAI solution to generate UiPath XML scripts directly from Tosca scripts.
+              </p>
+              <ul className="mt-4 space-y-1.5 text-sm">
+                {[
+                  "Generated UiPath-compatible XML scripts",
+                  "Captured test data and comments effectively",
+                  "Worked without selectors using structured prompts",
+                  "Created reusable templates for script generation",
+                ].map((li) => (
+                  <li key={li} className="flex items-start gap-2">
+                    <span className="text-purple-400 mt-0.5 flex-shrink-0">▸</span>
+                    {li}
+                  </li>
+                ))}
+              </ul>
+              <ArchBtn
+                label="View Architecture"
+                onClick={() => setSelectedArch({
+                  title: "UiPath Generator Architecture",
+                  nodes: ["Tosca Script Input","Transformation Logic","Prompt Engine","LLM","XML Script Output"],
+                })}
+              />
+              <ImpactBox text="Impact: Accelerated RPA development and improved consistency" />
+            </SectionCard>
+
+          </div>
+        </div>
+
+      </div>
+
+      {/* ══════════ ARCHITECTURE MODAL ══════════ */}
+      {selectedArch && (
+        <div className="fixed inset-0 flex items-center justify-center z-50"
+          style={{ backgroundColor: "rgba(2,6,23,0.88)", backdropFilter: "blur(12px)" }}
+          onClick={() => setSelectedArch(null)}
+        >
+          <div
+            className="card-3d p-8 max-w-lg w-full mx-4 relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* glow border */}
+            <div className="absolute inset-[-1px] rounded-2xl pointer-events-none"
+              style={{ background: "linear-gradient(135deg, rgba(96,165,250,0.3), rgba(167,139,250,0.3))", borderRadius: "17px", zIndex: -1 }} />
+
+            <button
+              onClick={() => setSelectedArch(null)}
+              className="absolute top-4 right-4 w-8 h-8 rounded-lg flex items-center justify-center text-gray-400 bg-white/5 hover:bg-white/10 hover:text-white transition-all duration-200"
+            >
+              ✕
+            </button>
+            <h3 className="text-lg font-bold mb-2">{selectedArch.title}</h3>
+            <div className="h-px mb-6 rounded-full"
+              style={{ background: "linear-gradient(90deg, #60a5fa, #a78bfa, transparent)" }} />
+            <ArchitectureDiagram nodes={selectedArch.nodes} />
+          </div>
+        </div>
+      )}
+
+    </section>
+  )
 }
