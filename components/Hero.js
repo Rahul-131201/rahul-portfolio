@@ -3,6 +3,31 @@
 import { useEffect, useRef, useState } from "react"
 import { useReveal } from "../hooks/useReveal"
 
+function MagBtn({ href, className, style, target, rel, children }) {
+  const ref = useRef(null)
+  const onEnter = () => {
+    if (!ref.current) return
+    ref.current.style.transition = "transform 0.12s linear"
+  }
+  const onMove = (e) => {
+    if (!ref.current) return
+    const { left, top, width, height } = ref.current.getBoundingClientRect()
+    const x = (e.clientX - (left + width / 2)) * 0.28
+    const y = (e.clientY - (top + height / 2)) * 0.28
+    ref.current.style.transform = `translate(${x}px, ${y}px) scale(1.04)`
+  }
+  const onLeave = () => {
+    if (!ref.current) return
+    ref.current.style.transition = "transform 0.55s cubic-bezier(0.16,1,0.3,1)"
+    ref.current.style.transform = "translate(0px,0px) scale(1)"
+  }
+  return (
+    <a ref={ref} href={href} className={className} style={style} target={target} rel={rel} onMouseEnter={onEnter} onMouseMove={onMove} onMouseLeave={onLeave}>
+      {children}
+    </a>
+  )
+}
+
 const IMPACT = [
   { icon: "🎯", label: "Test Case Generation Accuracy",       to: 90,   suffix: "-100%" },
   { icon: "⚡", label: "Reduction in QA Documentation Effort", to: 25,   suffix: "-50%"  },
@@ -124,15 +149,15 @@ export default function Hero() {
       </div>
 
       <div className="reveal mt-12 flex flex-wrap gap-4 items-center" style={{ animationDelay: "0.7s" }}>
-        <a href="#projects" className="group relative inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm bg-white text-black overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(96,165,250,0.4)] hover:scale-105">
+        <MagBtn href="#projects" className="group relative inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm bg-white text-black overflow-hidden transition-colors duration-300 hover:shadow-[0_0_30px_rgba(96,165,250,0.4)]">
           <span className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
           <span>⚙ Explore AI Systems</span>
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-        </a>
-        <a href="/Rahul_Ramane_Resume.pdf" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm border border-blue-500/50 bg-blue-600/15 text-blue-300 transition-all duration-300 hover:bg-blue-600/30 hover:border-blue-400 hover:shadow-[0_0_20px_rgba(96,165,250,0.3)] hover:scale-105">
+        </MagBtn>
+        <MagBtn href="/Rahul_Ramane_Resume.pdf" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm border border-blue-500/50 bg-blue-600/15 text-blue-300 transition-colors duration-300 hover:bg-blue-600/30 hover:border-blue-400 hover:shadow-[0_0_20px_rgba(96,165,250,0.3)]">
           <span>↓</span>
           <span>Download Resume</span>
-        </a>
+        </MagBtn>
       </div>
 
       <div className="reveal mt-14 flex flex-wrap gap-2" style={{ animationDelay: "0.85s" }}>

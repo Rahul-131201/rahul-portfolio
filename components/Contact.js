@@ -31,6 +31,15 @@ const FORM_ENDPOINT = "https://formspree.io/f/xwvwnkwn"
 export default function Contact() {
   const [fields, setFields]   = useState({ name: "", email: "", message: "" })
   const [status, setStatus]   = useState("idle")
+  const [copied, setCopied]   = useState(false)
+
+  const handleCopy = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {}
+  }
 
   const handleChange = (e) => setFields((f) => ({ ...f, [e.target.name]: e.target.value }))
 
@@ -73,15 +82,15 @@ export default function Contact() {
 
       <div className="mt-10 flex flex-col sm:flex-row gap-4">
         {LINKS.map((link) => (
-          <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" aria-label={`Contact via ${link.label}: ${link.value}`} className="card-3d glow-border flex items-center gap-4 px-5 py-4 flex-1 group">
+          <a key={link.label} href={link.href} onClick={link.label === "Email" ? (e) => { e.preventDefault(); handleCopy(link.value) } : undefined} target="_blank" rel="noopener noreferrer" aria-label={`Contact via ${link.label}: ${link.value}`} className="card-3d glow-border flex items-center gap-4 px-5 py-4 flex-1 group cursor-pointer">
             <span className="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0 animate-float" style={{ background: `${link.color}18`, border: `1px solid ${link.color}30` }}>
               {link.icon}
             </span>
             <div className="overflow-hidden">
-              <p className="text-xs font-bold tracking-widest" style={{ color: link.color }}>◈ {link.label.toUpperCase()}</p>
-              <p className="text-gray-300 group-hover:text-white transition-colors text-sm mt-0.5 truncate">{link.value}</p>
+              <p className="text-xs font-bold tracking-widest" style={{ color: link.color }}>◈ {link.label.toUpperCase()}{link.label === "Email" && <span className="ml-2 font-normal opacity-60 tracking-normal normal-case">(click to copy)</span>}</p>
+              <p className="text-gray-300 group-hover:text-white transition-colors text-sm mt-0.5 truncate">{link.label === "Email" && copied ? "✓ Copied!" : link.value}</p>
             </div>
-            <span className="ml-auto text-gray-600 group-hover:text-white group-hover:translate-x-1 transition-all duration-200 text-lg">→</span>
+            <span className="ml-auto text-gray-600 group-hover:text-white group-hover:translate-x-1 transition-all duration-200 text-lg">{link.label === "Email" ? (copied ? "✓" : "⎘") : "→"}</span>
           </a>
         ))}
       </div>

@@ -3,13 +3,14 @@
 import { useEffect, useState } from "react"
 
 const NAV_LINKS = [
-  { href: "#summary",        label: "Summary"    },
-  { href: "#skills",         label: "Skills"     },
-  { href: "#experience",     label: "Experience" },
-  { href: "#projects",       label: "Projects"   },
-  { href: "#education",      label: "Education"  },
-  { href: "#certifications", label: "Certs"      },
-  { href: "#contact",        label: "Contact"    },
+  { href: "#skills",         label: "Skills"      },
+  { href: "#experience",     label: "Experience"  },
+  { href: "#case-studies",   label: "Case Studies" },
+  { href: "#projects",       label: "Projects"    },
+  { href: "#ai-approach",    label: "AI Build"    },
+  { href: "#education",      label: "Education"   },
+  { href: "#certifications", label: "Certs"       },
+  { href: "#contact",        label: "Contact"     },
 ]
 
 export default function Navbar() {

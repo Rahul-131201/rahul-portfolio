@@ -4,7 +4,7 @@ import SmoothScrollProvider from "../components/SmoothScrollProvider";
 
 export const metadata = {
   title: "Rahul Ramane | GenAI Engineer",
-  description: "Portfolio of Rahul Ramane - GenAI Engineer specializing in AI-driven testing solutions",
+  description: "Rahul Ramane — Gen AI Engineer & QA Automation Specialist at Capgemini. Expert in LLM pipelines, prompt engineering, agentic AI, Selenium, Python, and Django. Open to AI Engineering opportunities.",
 };
 
 export default function RootLayout({

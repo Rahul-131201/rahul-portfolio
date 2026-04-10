@@ -2,6 +2,7 @@
 "use client"
 
 import { useState } from "react"
+import { useReveal } from "../hooks/useReveal"
 import ArchitectureDiagram from "./ArchitectureDiagram"
 
 function TechBadges({ text }) {
@@ -44,10 +45,11 @@ function SectionCard({ children }) {
 }
 
 export default function Experience() {
+  const sectionRef = useReveal()
   const [selectedArch, setSelectedArch] = useState(null)
 
   return (
-    <section id="experience" className="relative max-w-6xl mx-auto px-6 py-28 overflow-hidden">
+    <section ref={sectionRef} id="experience" className="relative max-w-6xl mx-auto px-6 py-28 overflow-hidden">
 
       {/* Orb */}
       <div className="gradient-glow w-[600px] h-[600px] top-0 right-[-200px] pointer-events-none"
@@ -58,10 +60,17 @@ export default function Experience() {
         <h2 className="section-heading">Professional Experience</h2>
       </div>
 
-      <div className="mt-14 space-y-20 text-gray-400">
+      <div className="mt-14 relative text-gray-400">
+
+        {/* Timeline backbone */}
+        <div className="hidden lg:block absolute left-[18px] top-6 bottom-6 w-px" style={{ background: "linear-gradient(180deg, rgba(96,165,250,0.6) 0%, rgba(167,139,250,0.4) 55%, rgba(96,165,250,0.05) 100%)" }} />
+
+        <div className="space-y-20 lg:pl-14">
 
         {/* ══════════ TRAINING ══════════ */}
-        <SectionCard>
+        <div className="reveal relative">
+          <div className="hidden lg:flex absolute -left-14 top-4 w-9 h-9 rounded-full items-center justify-center text-base z-10" style={{ background: "rgba(15,23,42,1)", border: "2px solid rgba(96,165,250,0.5)", boxShadow: "0 0 14px rgba(96,165,250,0.3)" }}>🎓</div>
+          <SectionCard>
           <h4 className="text-white font-semibold text-base">
             Java + Selenium Automation Training &amp; Project
           </h4>
@@ -85,12 +94,15 @@ export default function Experience() {
             ))}
           </ul>
           <ImpactBox text="Impact: Built strong foundation in automation testing and Agile workflows" />
-        </SectionCard>
+          </SectionCard>
+        </div>
 
         {/* ══════════ CAPGEMINI ══════════ */}
-        <div>
+        <div className="reveal relative" style={{ animationDelay: "0.05s" }}>
+          <div className="hidden lg:flex absolute -left-14 top-0 w-9 h-9 rounded-2xl items-center justify-center text-base z-10" style={{ background: "rgba(15,23,42,1)", border: "2px solid rgba(96,165,250,0.5)", boxShadow: "0 0 14px rgba(96,165,250,0.3)" }}>🏢</div>
+          <div>
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-xl flex-shrink-0"
+            <div className="lg:hidden w-12 h-12 rounded-2xl flex items-center justify-center text-xl flex-shrink-0"
               style={{ background: "rgba(96,165,250,0.12)", border: "1px solid rgba(96,165,250,0.25)" }}>
               🏢
             </div>
@@ -182,12 +194,15 @@ export default function Experience() {
             </SectionCard>
 
           </div>
+          </div>
         </div>
 
         {/* ══════════ NATWEST ══════════ */}
-        <div>
+        <div className="reveal relative" style={{ animationDelay: "0.1s" }}>
+          <div className="hidden lg:flex absolute -left-14 top-0 w-9 h-9 rounded-2xl items-center justify-center text-base z-10" style={{ background: "rgba(15,23,42,1)", border: "2px solid rgba(167,139,250,0.5)", boxShadow: "0 0 14px rgba(167,139,250,0.3)" }}>🏦</div>
+          <div>
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-xl flex-shrink-0"
+            <div className="lg:hidden w-12 h-12 rounded-2xl flex items-center justify-center text-xl flex-shrink-0"
               style={{ background: "rgba(167,139,250,0.12)", border: "1px solid rgba(167,139,250,0.25)" }}>
               🏦
             </div>
@@ -311,9 +326,11 @@ export default function Experience() {
             </SectionCard>
 
           </div>
+          </div>
         </div>
 
-      </div>
+        </div>{/* end space-y-20 lg:pl-14 */}
+      </div>{/* end timeline outer */}
 
       {/* ══════════ ARCHITECTURE MODAL ══════════ */}
       {selectedArch && (
