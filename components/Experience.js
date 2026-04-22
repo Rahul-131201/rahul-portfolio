@@ -108,7 +108,7 @@ export default function Experience() {
             </div>
             <div>
               <h3 className="text-white text-xl font-bold">Capgemini India</h3>
-              <p className="text-sm text-gray-500 mt-0.5">◈ Software Engineer &nbsp;|&nbsp; Sept 2024 – Present</p>
+              <p className="text-sm text-gray-500 mt-0.5">◈ Senior Software Engineer &nbsp;|&nbsp; Sept 2024 – Present</p>
             </div>
           </div>
 
@@ -119,7 +119,7 @@ export default function Experience() {
               <h4 className="text-white font-semibold text-base">
                 AI-Powered JMeter Script Generation Platform
               </h4>
-              <TechBadges text="Prompt Engineering • JMeter • Django • Streamlit • API Automation" />
+              <TechBadges text="Prompt Engineering • JMeter • Django • Streamlit • API Automation • GitHub Copilot" />
               <p className="mt-4 text-sm leading-relaxed">
                 <span className="text-gray-300 font-medium">Problem:</span>{" "}
                 Performance test scripting required heavy manual effort and lacked consistency.
@@ -159,7 +159,7 @@ export default function Experience() {
               <h4 className="text-white font-semibold text-base">
                 Tosca → Manual Test Case Migration Agent
               </h4>
-              <TechBadges text="Prompt Engineering • Django • API Development • Test Automation" />
+              <TechBadges text="Prompt Engineering • Django • API Development • Test Automation • GitHub Copilot" />
               <p className="mt-4 text-sm leading-relaxed">
                 <span className="text-gray-300 font-medium">Problem:</span>{" "}
                 Manual test case creation from Tosca scripts was time-consuming and inconsistent.
@@ -207,7 +207,7 @@ export default function Experience() {
               🏦
             </div>
             <div>
-              <h3 className="text-white text-xl font-bold">NATWEST (Wealth Client)</h3>
+              <h3 className="text-white text-xl font-bold">NATWEST (Banking Client)</h3>
               <p className="text-sm text-gray-500 mt-0.5">◈ July 2025 – Dec 2025</p>
             </div>
           </div>
@@ -293,7 +293,7 @@ export default function Experience() {
               <h4 className="text-white font-semibold text-base">
                 UiPath Script Generation using GenAI
               </h4>
-              <TechBadges text="GenAI • XML Processing • Prompt Engineering" />
+              <TechBadges text="GenAI • XML Processing • Prompt Engineering • GitLab Duo" />
               <p className="mt-4 text-sm leading-relaxed">
                 <span className="text-gray-300 font-medium">Problem:</span>{" "}
                 Manual creation of UiPath scripts was time-intensive and repetitive.
@@ -323,6 +323,64 @@ export default function Experience() {
                 })}
               />
               <ImpactBox text="Impact: Accelerated RPA development and improved consistency" />
+            </SectionCard>
+
+          </div>
+          </div>
+        </div>
+
+        {/* ══════════ PENSION FUNDS ══════════ */}
+        <div className="reveal relative" style={{ animationDelay: "0.15s" }}>
+          <div className="hidden lg:flex absolute -left-14 top-0 w-9 h-9 rounded-2xl items-center justify-center text-base z-10" style={{ background: "rgba(15,23,42,1)", border: "2px solid rgba(52,211,153,0.5)", boxShadow: "0 0 14px rgba(52,211,153,0.3)" }}>💼</div>
+          <div>
+          <div className="flex items-center gap-4 mb-8">
+            <div className="lg:hidden w-12 h-12 rounded-2xl flex items-center justify-center text-xl flex-shrink-0"
+              style={{ background: "rgba(52,211,153,0.12)", border: "1px solid rgba(52,211,153,0.25)" }}>
+              💼
+            </div>
+            <div>
+              <h3 className="text-white text-xl font-bold">Pension Funds (Insurance Client)</h3>
+              <p className="text-sm text-gray-500 mt-0.5">◈ March 2026 – March 2026</p>
+            </div>
+          </div>
+
+          <div className="space-y-8">
+
+            <SectionCard>
+              <h4 className="text-white font-semibold text-base">
+                Manual Test Case → Java Selenium Script Generation
+              </h4>
+              <TechBadges text="GitHub Copilot • Java • Selenium • Azure DevOps • Prompt Engineering" />
+              <p className="mt-4 text-sm leading-relaxed">
+                <span className="text-gray-300 font-medium">Problem:</span>{" "}
+                Converting manual test cases into executable Java Selenium scripts was time-consuming and required deep framework knowledge.
+              </p>
+              <p className="mt-2 text-sm leading-relaxed">
+                <span className="text-gray-300 font-medium">Solution:</span>{" "}
+                Developed an AI-assisted solution using custom GitHub Copilot agents to fetch test cases from Azure DevOps and auto-generate executable test scripts aligned with the automation framework.
+              </p>
+              <ul className="mt-4 space-y-1.5 text-sm">
+                {[
+                  "Leveraged custom GitHub Copilot agents to fetch test cases from Azure DevOps",
+                  "Generated executable Java Selenium test scripts from manual test cases",
+                  "Aligned generated test data with existing automation framework conventions",
+                  "Ensured script consistency using structured prompt templates",
+                  "Validated generated scripts against test case acceptance criteria",
+                ].map((li) => (
+                  <li key={li} className="flex items-start gap-2">
+                    <span className="text-emerald-400 mt-0.5 flex-shrink-0">▸</span>
+                    {li}
+                  </li>
+                ))}
+              </ul>
+              <ArchBtn
+                label="View Architecture"
+                onClick={() => setSelectedArch({
+                  title: "Selenium Script Generation Architecture",
+                  nodes: ["Azure DevOps","GitHub Copilot Agent","Test Case Fetcher","Prompt Engine","Java Selenium Script","Test Data Alignment"],
+                })}
+              />
+              <ImpactBox text="Impact: Achieved 90% generation accuracy, reducing overall effort and generation time by 75%" />
             </SectionCard>
 
           </div>

@@ -29,9 +29,9 @@ function MagBtn({ href, className, style, target, rel, children }) {
 }
 
 const IMPACT = [
-  { icon: "🎯", label: "Test Case Generation Accuracy",       to: 90,   suffix: "-100%" },
-  { icon: "⚡", label: "Reduction in QA Documentation Effort", to: 25,   suffix: "-50%"  },
-  { icon: "🚀", label: "AI Automation Solutions Delivered",    to: 5,    suffix: "+"     },
+  { icon: "🎯", label: "Generation Accuracy",       to: 80,   suffix: "-100%" },
+  { icon: "⚡", label: "Reduction in QA Documentation Effort", to: 50,   suffix: "-80%"  },
+  { icon: "🚀", label: "AI Automation Solutions Delivered",    to: 6,    suffix: "+"     },
   { icon: "🤖", label: "Powered QA & Automation Systems",     to: null, fixed: "LLM"   },
 ]
 
@@ -149,7 +149,7 @@ export default function Hero() {
       </div>
 
       <div className="reveal mt-12 flex flex-wrap gap-4 items-center" style={{ animationDelay: "0.7s" }}>
-        <MagBtn href="#projects" className="group relative inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm bg-white text-black overflow-hidden transition-colors duration-300 hover:shadow-[0_0_30px_rgba(96,165,250,0.4)]">
+        <MagBtn href="#case-studies" className="group relative inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm bg-white text-black overflow-hidden transition-colors duration-300 hover:shadow-[0_0_30px_rgba(96,165,250,0.4)]">
           <span className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
           <span>⚙ Explore AI Systems</span>
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>

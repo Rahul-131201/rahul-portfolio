@@ -437,9 +437,9 @@ section[id] { scroll-margin-top: 80px; }
   }
   .card-3d::after { display: none; }
   html { scroll-behavior: auto !important; }
-  .sec-enter-up,
-  .sec-enter-left,
-  .sec-enter-right { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .sec-from-bottom,
+  .sec-from-top { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; }
+  .sec-entry-line { display: none !important; }
   .logo-ticker-track { animation: none !important; }
 }
 
@@ -700,33 +700,105 @@ section[id] { scroll-margin-top: 80px; }
    SECTION-LEVEL ENTRANCE TRANSITIONS
    ---------------------------------------------------------- */
 
-.sec-enter-up {
+/* Entering from below (scrolling down into section) */
+.sec-from-bottom {
   opacity: 0;
-  transform: translateY(56px);
-  transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: translateY(80px) scale(0.97);
+  filter: blur(5px);
+  transition:
+    opacity   1.05s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.05s cubic-bezier(0.22, 1, 0.36, 1),
+    filter    0.80s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
 }
 
-.sec-enter-left {
+/* Entering from above (scrolling up back into section) */
+.sec-from-top {
   opacity: 0;
-  transform: translateX(-52px);
-  transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-.sec-enter-right {
-  opacity: 0;
-  transform: translateX(52px);
-  transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: translateY(-50px) scale(0.97);
+  filter: blur(5px);
+  transition:
+    opacity   1.05s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.05s cubic-bezier(0.22, 1, 0.36, 1),
+    filter    0.80s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
 }
 
 .sec-visible {
-  opacity: 1 !important;
+  opacity:   1    !important;
   transform: none !important;
+  filter:    none !important;
+}
+
+/* ── Horizontal sweep line injected on section entry ─────── */
+.sec-entry-line {
+  position:       absolute;
+  top:            0;
+  left:           0;
+  right:          0;
+  height:         2px;
+  border-radius:  2px;
+  background:     linear-gradient(
+    90deg,
+    transparent                      0%,
+    var(--sec-col, #60a5fa)         25%,
+    var(--sec-col, #60a5fa)         75%,
+    transparent                    100%
+  );
+  box-shadow:     0 0 14px var(--sec-col, #60a5fa),
+                  0 0 28px var(--sec-col, #60a5fa)44;
+  pointer-events: none;
+  z-index:        20;
+  animation:      sec-line-sweep 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes sec-line-sweep {
+  0%   { transform: translateX(-115%); opacity: 0;   }
+  12%  {                               opacity: 0.9; }
+  88%  {                               opacity: 0.9; }
+  100% { transform: translateX(115%);  opacity: 0;   }
+}
+
+/* ----------------------------------------------------------
+   SKILL GAME — chip entrance animation
+   ---------------------------------------------------------- */
+
+.sg-chip {
+  animation: sg-chip-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes sg-chip-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.88); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ----------------------------------------------------------
+   ARCHERY GAME — 3D trigger button animation
+   ---------------------------------------------------------- */
+
+.archery-trigger-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: block;
+  flex-shrink: 0;
+}
+
+.archery-target-svg {
+  display: block;
+  filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.55));
+  animation: archery-tilt 3.6s ease-in-out infinite;
+}
+
+@keyframes archery-tilt {
+  0%, 100% {
+    transform: perspective(200px) rotateY(-22deg) scale(1.00);
+    filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.50));
+  }
+  50% {
+    transform: perspective(200px) rotateY(22deg) scale(1.08);
+    filter: drop-shadow(0 0 22px rgba(96, 165, 250, 0.88));
+  }
 }
 
 /* ----------------------------------------------------------

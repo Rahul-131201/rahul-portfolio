@@ -1,6 +1,7 @@
 ﻿"use client"
 
 import { useEffect, useRef, useState } from "react"
+import { createPortal } from "react-dom"
 import dynamic from "next/dynamic"
 
 /* ── Simple-Icons CDN helper (for per-skill logo fallbacks) ── */
@@ -9,20 +10,8 @@ const DV = (name, file) =>
 const SI = (slug, hex) =>
   `https://cdn.simpleicons.org/${slug}/${hex}`
 
-/* ── 3D ball scene — loaded client-only to avoid SSR errors ── */
-const SkillBalls3D = dynamic(() => import("./SkillBalls3D"), {
-  ssr: false,
-  loading: () => (
-    <div
-      style={{ height: 240 }}
-      className="flex items-center justify-center"
-    >
-      <span className="text-gray-600 text-sm animate-pulse tracking-widest">
-        loading 3d scene...
-      </span>
-    </div>
-  ),
-})
+/* ── Archery skill game — loaded client-only ─────────────────── */
+const ArcheryGame = dynamic(() => import("./ArcheryGame"), { ssr: false })
 
 /* ── Logo map for per-skill icons inside category cards ───── */
 const LOGO = {
@@ -38,9 +27,12 @@ const LOGO = {
   "GitLab Duo":               DV("gitlab",     "gitlab-original"),
   /* ── AI / GenAI skills — distinct icons per skill ─────── */
   "Generative AI Systems":    SI("googlegemini", "8E75B2"),  // Google Gemini — flagship GenAI platform
-  "LLM Prompt Engineering":   SI("huggingface",  "FF9D00"),  // HuggingFace — prompt spaces & model hub
+  "LLM Prompt Engineering":   SI("huggingface", "FFD21E"),   // Hugging Face — LLM prompt hub
   "LLM APIs":                 SI("anthropic",   "CC785C"),   // Anthropic — Claude / API design
   "AI Automation Frameworks": SI("langchain",   "22d3ee"),   // LangChain — orchestration framework
+  TestNG:                     DV("junit",       "junit-original"),          // JUnit (closest icon to TestNG)
+  Playwright:                 DV("playwright",  "playwright-original"),     // Playwright devicon
+  Claude:                     SI("claude",       "D97757"),   // Claude — Anthropic's AI assistant logo
 }
 
 const SKILL_CATEGORIES = [
@@ -75,6 +67,7 @@ const SKILL_CATEGORIES = [
       { name: "API Testing", level: 85 },
       { name: "Cucumber",    level: 78 },
       { name: "TestNG",      level: 75 },
+      { name: "Playwright",  level: 80 }, // Added Playwright
     ],
   },
   {
@@ -85,6 +78,7 @@ const SKILL_CATEGORIES = [
       { name: "GitHub Copilot", level: 90 },
       { name: "GitLab Duo",     level: 85 },
       { name: "LLM APIs",       level: 88 },
+      { name: "Claude",         level: 87 }, // Added Claude
     ],
   },
 ]
@@ -92,6 +86,7 @@ const SKILL_CATEGORIES = [
 export default function Skills() {
   const sectionRef = useRef(null)
   const [inView, setInView] = useState(false)
+  const [showGame, setShowGame] = useState(false)
 
   useEffect(() => {
     if (!sectionRef.current) return
@@ -116,18 +111,57 @@ export default function Skills() {
       </div>
       <p className="text-gray-500 text-sm mt-6 max-w-lg">
         Full-stack AI engineering from model integration to production automation.
-        <span className="ml-2 text-gray-600">Move cursor to interact →</span>
+        <span className="ml-2 text-gray-600">Click the target below to play Archery →</span>
       </p>
 
-      {/* ── 3D physics logo balls ─────────────────────────── */}
-      <div className="mt-6 mb-14 rounded-2xl overflow-hidden"
+      {/* ── Archery trigger (compact, opens modal) ─────────── */}
+      <div className="mt-6 mb-14 rounded-2xl px-5 py-4 flex items-center gap-5"
         style={{
-          border:     "1px solid rgba(96,165,250,0.14)",
-          background: "linear-gradient(180deg, rgba(8,12,28,0.70) 0%, rgba(4,7,18,0.85) 100%)",
-          boxShadow:  "0 0 80px rgba(96,165,250,0.06) inset, 0 2px 40px rgba(0,0,0,0.5)",
+          border:     "1px solid rgba(96,165,250,0.12)",
+          background: "linear-gradient(90deg, rgba(8,12,28,0.80) 0%, rgba(4,7,18,0.90) 100%)",
         }}>
-        <SkillBalls3D />
+        {/* 3D animated bullseye icon */}
+        <button className="archery-trigger-btn" onClick={() => setShowGame(true)} aria-label="Open archery game">
+          <svg className="archery-target-svg" width="68" height="68" viewBox="0 0 68 68" fill="none">
+            <circle cx="34" cy="34" r="32" fill="#f5f5ee" stroke="rgba(0,0,0,0.12)" strokeWidth="0.8"/>
+            <circle cx="34" cy="34" r="25.6" fill="#1a1a1a"/>
+            <circle cx="34" cy="34" r="19.2" fill="#1e72c0"/>
+            <circle cx="34" cy="34" r="12.8" fill="#d03030"/>
+            <circle cx="34" cy="34" r="6.4"  fill="#e9cb30"/>
+            <circle cx="34" cy="34" r="2.8"  fill="rgba(255,255,255,0.90)"/>
+          </svg>
+        </button>
+        {/* Description */}
+        <div className="flex-1">
+          <div style={{ fontWeight: 700, fontSize: 14, color: "#f1f5f9" }}>
+            Archery Challenge
+          </div>
+          <div style={{ fontSize: 12, color: "rgba(148,163,184,0.60)", marginTop: 3 }}>
+            Hit the moving Olympic target — each hit reveals a tech skill.
+            Unlock all 17 to complete the board.
+          </div>
+        </div>
+        {/* Launch button */}
+        <button
+          onClick={() => setShowGame(true)}
+          style={{
+            background: "linear-gradient(135deg, rgba(96,165,250,0.15), rgba(52,211,153,0.10))",
+            border: "1px solid rgba(96,165,250,0.28)", borderRadius: 10,
+            color: "#93c5fd", fontWeight: 700, fontSize: 13,
+            padding: "9px 18px", cursor: "pointer", whiteSpace: "nowrap",
+            flexShrink: 0,
+          }}
+        >
+          🏹 Play Now
+        </button>
       </div>
+
+      {/* Game modal — rendered via portal on document.body to escape
+           ancestor filter/transform that breaks position:fixed */}
+      {showGame && createPortal(
+        <ArcheryGame onClose={() => setShowGame(false)} />,
+        document.body
+      )}
 
       {/* ── Category cards with skill-level bars ──────────── */}
       <div className="grid md:grid-cols-4 gap-6">
