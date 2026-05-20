@@ -123,7 +123,14 @@ Rahul Ramane is a Software Analyst at Capgemini India working as a GenAI Enginee
 
 Keep answers concise. Use bullet points when listing multiple items. If asked about availability, hiring, or collaboration, direct them to the contact section. Never make up information not listed above.`
 
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
+// Lazy initialization of Groq client (runtime-only, not build-time)
+let groqInstance = null
+function getGroqClient() {
+  if (!groqInstance) {
+    groqInstance = new Groq({ apiKey: process.env.GROQ_API_KEY })
+  }
+  return groqInstance
+}
 
 export async function POST(req) {
   try {
@@ -136,6 +143,7 @@ export async function POST(req) {
     // Limit history to last 10 messages to avoid token overflow
     const trimmed = messages.slice(-10)
 
+    const groq = getGroqClient()
     const completion = await groq.chat.completions.create({
       model: "llama-3.3-70b-versatile",
       messages: [
