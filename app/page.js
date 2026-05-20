@@ -14,6 +14,7 @@ import AIApproach from "../components/AIApproach"
 import Education from "../components/Education"
 import Certifications from "../components/Certifications"
 import Contact from "../components/Contact"
+import ChatBot from "../components/ChatBot"
 
 export default function Home(){
   return(
@@ -35,6 +36,7 @@ export default function Home(){
       <Education/>
       <Certifications/>
       <Contact/>
+      <ChatBot/>
 
     </main>
   )

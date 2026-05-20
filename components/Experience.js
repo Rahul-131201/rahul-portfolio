@@ -387,6 +387,109 @@ export default function Experience() {
           </div>
         </div>
 
+        {/* ══════════ BNP PARIBAS ══════════ */}
+        <div className="reveal relative" style={{ animationDelay: "0.2s" }}>
+          <div className="hidden lg:flex absolute -left-14 top-0 w-9 h-9 rounded-2xl items-center justify-center text-base z-10" style={{ background: "rgba(15,23,42,1)", border: "2px solid rgba(96,165,250,0.5)", boxShadow: "0 0 14px rgba(96,165,250,0.3)" }}>🏦</div>
+          <div>
+          <div className="flex items-center gap-4 mb-8">
+            <div className="lg:hidden w-12 h-12 rounded-2xl flex items-center justify-center text-xl flex-shrink-0"
+              style={{ background: "rgba(96,165,250,0.12)", border: "1px solid rgba(96,165,250,0.25)" }}>
+              🏦
+            </div>
+            <div>
+              <h3 className="text-white text-xl font-bold">BNP Paribas (Banking Client)</h3>
+              <p className="text-sm text-gray-500 mt-0.5">◈ April – May 2026</p>
+            </div>
+          </div>
+
+          <div className="space-y-8">
+
+            {/* Java Selenium Script Generation */}
+            <SectionCard>
+              <h4 className="text-white font-semibold text-base">
+                Manual Test Case → Java Selenium Script Auto-Generation
+              </h4>
+              <TechBadges text="Continue Plugin • Java • Selenium • DOM Structure • XPath Generation • GPT OSS" />
+              <p className="mt-4 text-sm leading-relaxed">
+                <span className="text-gray-300 font-medium">Problem:</span>{" "}
+                Manual creation of Selenium test scripts from test cases required significant effort and was error-prone for complex web elements. Team needed structured AI enablement and best practices.
+              </p>
+              <p className="mt-2 text-sm leading-relaxed">
+                <span className="text-gray-300 font-medium">Solution:</span>{" "}
+                Leveraged Continue plugin with GPT OSS models using advanced DOM structure prompting to auto-generate Java Selenium scripts with intelligent method reuse and dynamic XPath generation.
+              </p>
+              <ul className="mt-4 space-y-1.5 text-sm">
+                {[
+                  "Set up Continue plugin chat mode for secure banking environment",
+                  "Designed prompt engineering templates for consistent context setting",
+                  "Parsed manual test cases into structured AI prompts",
+                  "Generated Java Selenium scripts with intelligent method reuse",
+                  "Auto-generated XPaths using DOM structure analysis & context",
+                  "Created new methods only when existing framework methods unavailable",
+                  "Implemented validation logic for UI interactions",
+                  "Trained team on AI-assisted scripting best practices",
+                ].map((li) => (
+                  <li key={li} className="flex items-start gap-2">
+                    <span className="text-cyan-400 mt-0.5 flex-shrink-0">▸</span>
+                    {li}
+                  </li>
+                ))}
+              </ul>
+              <ArchBtn
+                label="View Architecture"
+                onClick={() => setSelectedArch({
+                  title: "Selenium AI Script Generation",
+                  nodes: ["Test Case Input","DOM Parser","Continue Plugin","GPT OSS","XPath Generator","Java Script Output","Framework Validator"],
+                })}
+              />
+              <ImpactBox text="Impact: 85–90% accuracy, 150% productivity gain, 60% time reduction per test case" />
+            </SectionCard>
+
+            {/* API Script Generation */}
+            <SectionCard>
+              <h4 className="text-white font-semibold text-base">
+                API Test Script Generation from Test Cases
+              </h4>
+              <TechBadges text="Continue Plugin • API Automation • Prompt Engineering • Request Parsing • Mistral" />
+              <p className="mt-4 text-sm leading-relaxed">
+                <span className="text-gray-300 font-medium">Challenge:</span>{" "}
+                Banking APIs required extensive test coverage with complex request/response structures, request bodies, and authentication logic. Needed AI-driven enablement across the QA team.
+              </p>
+              <p className="mt-2 text-sm leading-relaxed">
+                <span className="text-gray-300 font-medium">Solution:</span>{" "}
+                Built AI-powered API script generation using Continue plugin with Mistral models to automatically extract request URLs, headers, bodies, and validation logic from test cases.
+              </p>
+              <ul className="mt-4 space-y-1.5 text-sm">
+                {[
+                  "Implemented Continue plugin with Mistral for open-source AI enablement",
+                  "Established prompt optimization best practices for token efficiency",
+                  "Extracted API endpoints (URLs) from test case documentation",
+                  "Parsed request bodies (JSON/XML) with context preservation",
+                  "Generated authentication & header configuration scripts",
+                  "Created response validation & assertion logic",
+                  "Built reusable API client methods and helpers",
+                  "Implemented error handling & edge case coverage",
+                ].map((li) => (
+                  <li key={li} className="flex items-start gap-2">
+                    <span className="text-indigo-400 mt-0.5 flex-shrink-0">▸</span>
+                    {li}
+                  </li>
+                ))}
+              </ul>
+              <ArchBtn
+                label="View Architecture"
+                onClick={() => setSelectedArch({
+                  title: "API Script Generation Pipeline",
+                  nodes: ["Test Case Input","API URL Extractor","Request Parser","Auth Handler","Mistral LLM","Script Generator","Validation Engine"],
+                })}
+              />
+              <ImpactBox text="Impact: 85–90% generation accuracy, 100% productivity improvement, 55% effort reduction" />
+            </SectionCard>
+
+          </div>
+          </div>
+        </div>
+
         </div>{/* end space-y-20 lg:pl-14 */}
       </div>{/* end timeline outer */}
 
